@@ -1,0 +1,11 @@
+deepface==0.0.75
+Flask==2.2.2
+milvus==2.1.0
+#mtcnn==0.1.1
+numpy==1.19.5
+opencv-python==4.6.0.66
+pandas==1.4.4
+pillow==8.4.0
+pymilvus==2.1.0
+retina-face==0.0.12
+
