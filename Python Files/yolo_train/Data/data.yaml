@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 8
+names: ['civilian_vehicle', 'gun', 'military_tank', 'military_truck', 'military_vehicle', 'person', 'pistol', 'soldier']
+
+roboflow:
+  workspace: hammad-musaddiq
+  project: new-data-for-mulhim
+  version: 9
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/hammad-musaddiq/new-data-for-mulhim/dataset/9

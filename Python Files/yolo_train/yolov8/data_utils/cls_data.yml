@@ -1,0 +1,9 @@
+train: /home/gpu-ain/sbmalik/fixed_target/dataset/close_imagery_train/train
+val: /home/gpu-ain/sbmalik/fixed_target/dataset/close_imagery_train/val
+test: /home/gpu-ain/sbmalik/fixed_target/dataset/close_imagery_train/test
+
+names: 
+  0: 'Bridge'
+  1: 'Coastal'
+  2: 'Industrial'
+  3: 'Residential'

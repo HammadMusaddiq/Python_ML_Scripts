@@ -1,0 +1,8 @@
+opencv-python==4.6.0.66
+vidgear==0.2.4
+yt_dlp==2022.7.18
+pillow==8.4.0
+flask==2.0.3
+deepface==0.0.75
+pymilvus==2.1.0
+pywebhdfs==0.4.1

@@ -1,0 +1,38 @@
+# Separate conda envrionments for accessing GPU Server with jupyter notebook
+ 
+# To create new conda envrionment, activate envrionment, install packages to that envrionment
+
+# Environmnet for Object Detection (User: Hammad)
+conda create -n objd python=3.6
+conda activate objd
+pip install -r objd_requirements.txt
+
+# To access environment from Jupyter Notebook
+conda install -c anaconda ipykernel
+ipython kernel install --user --name=objd
+
+
+# Extra
+
+# torch and tensorflow should be in seperate environment.
+# To create python virual environment
+
+# First we need to install python version on OS (if specific python version already isntalled, then don't need to install again)
+sudo apt update
+sudo apt install python3.6
+
+# python virual environment
+
+Method:1
+pip3 install virtualenv (Don't need to install if already installed)
+virtualenv --python=/usr/bin/python3.6 objd
+
+Method:2
+apt-get install python3-venv
+python3.6 -m venv objd
+
+# Activate venv
+source objd/bin/activate
+
+# Install requirement.txt 
+pip install -r /home/hammad/Downloads/objd_pex/objd_requirements.txt
