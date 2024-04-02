@@ -1,0 +1,55 @@
+version: "2.3"
+
+services:
+
+
+  drone_rtsp_out:
+    image: "drone_rtsp_out"
+    container_name: drone_rtsp_out
+    build:
+      context: ./services
+      dockerfile: dst_rtsp_out/Dockerfile
+      args:
+        - CLASSES=${CLASSES}
+    runtime: nvidia
+    # ipc: host
+    # network_mode: host
+    ports:
+      # - 8554:8554
+      - 9001:9001
+      - 8006:8006
+      - 559:554
+    shm_size: 1g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      stack:
+        soft: 67108864
+        hard: 67108864
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${LOCAL_RESOURCES_DIR}:/resources
+
+      - ./services/dst_rtsp_out/app/static:/app/static
+      - ./services/dst_rtsp_out/app/templates:/app/templates
+      - ./services/dst_rtsp_out/app/utils:/app/utils
+      - ./services/dst_rtsp_out/app/dst_app.py:/app/dst_app.py
+      - ./services/dst_rtsp_out/app/main.py:/app/main.py
+
+    # depends_on:
+    #   - kafka
+    #   - kafka_transmitter
+
+    # command: "/bin/bash"
+    # command: "python3 main.py"
+    #command: "pwd"
+    #command: "ls"
+    #command: "ls configs"
+    #command: "python3 /app/dst_app.py -i 'rtsp://admin:Rapidev321@192.168.23.166:554/cam/realmonitor?channel=1&subtype=0'"
+    command: "python3 /app/request_dst.py"
+    # logging:
+      # driver: none
+
+volumes:
+  kafka_data:

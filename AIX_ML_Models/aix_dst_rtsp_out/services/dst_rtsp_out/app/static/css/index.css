@@ -1,0 +1,216 @@
+body {
+    margin: 0 !important;
+}
+.p-r-20 {
+    padding-right: 20px;
+}
+.p-b-10 {
+    padding-bottom: 10px;
+}
+.space-around {
+    justify-content: space-around;
+}
+.text-center {
+    text-align: center;
+}
+.justify-center {
+    justify-content: center;
+}
+.justify-end {
+    justify-content: end;
+}
+.space-between {
+    justify-content: space-between;
+}
+.m-auto {
+    margin: auto;
+}
+.max-width {
+    max-width: 1024px;
+    width: 100%;
+}
+.row {
+    display: flex;
+}
+.col-2 {
+    width: 74px !important;
+}
+.col-10 {
+    padding: 0 30px;
+    width: calc(100% - 74px);
+}
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff !important;
+}
+.header .header-content {
+    width: 100%;
+    height: 72px;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+.header .logo-section {
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    background-color: #f8fbff;
+    max-width: 73px !important;
+    width: 100% !important;
+    border-right: 1px solid #000000;
+}
+.header .logo {
+    max-width: 55px;
+    width: 100%;
+    max-height: 55px;
+    height: 100%;
+    padding: 8px;
+    overflow: hidden;
+}
+.header .logo-border {
+    padding-right: 10px;
+    height: 100%;
+    border-right: 1px solid #000000;
+}
+.main {
+    display: flex;
+    background-color: #f1f0f09c;
+}
+.main .content {
+    padding: 10px;
+}
+.main .content .capture-text{
+    padding-bottom: 20px;
+    margin: 0;
+}
+.main .content .username-field{
+    font-size: 16px;
+    font-weight: 600;
+}
+.main .content .frame-section{
+    width: 100%;
+    text-align: center;
+}
+.main .content .frame{
+    max-width: 1024px;
+    width: 100%;
+}
+.main .content input[type=text] {
+    width: fit-content;
+    margin: 8px 0;
+    padding: 12px 20px;
+    border: 1px solid #ebe9e9;
+    box-sizing: border-box;
+}
+.main .left-sidebar {
+    height: inherit;
+    background-color: #f8fbff!important;
+    border-right: 1px solid #000000;
+}
+.main .left-sidebar .logo-text {
+    font-size: 22px;
+    margin: 10px 0;
+    text-align: center;
+}
+.main h1 {
+    margin: 0px !important;
+}
+
+.button {
+    background-color: #275beb;
+    border: none;
+    color: white;
+    padding: 13px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.finilize-btn {
+    margin-top: 20px;
+    max-width: 1024px;
+    width: 100%;
+}
+
+.prepare-entry-btn {
+    margin-top: 20px;
+    max-width: 1024px;
+    width: 100%;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #275bebdc;
+}
+
+.clean-dataset {
+    background-color: #db1a1a;
+}
+
+.clean-dataset:hover {
+    cursor: pointer;
+    background-color: #db1a1ad0;
+}
+
+/* Slider Button */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: block;
+    width: 45px;
+    height: 21px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 13px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .2.5s;
+    transition: .2.5s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

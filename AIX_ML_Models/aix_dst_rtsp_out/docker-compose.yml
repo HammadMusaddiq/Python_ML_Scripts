@@ -1,0 +1,28 @@
+version: "2.3"
+
+services:
+
+  dst_service_handler:
+    image: "dst_service_handler_multi"
+    container_name: dst_service_handler_multi
+    build:
+      context: ./services
+      dockerfile: dst_service_handler/Dockerfile
+    ports:
+      - 8096:8096
+    # network_mode: host
+    command: "python3 /app/main.py"
+    environment:
+      - TZ=Asia/Karachi
+      - LOCAL_RESOURCES_DIR=$LOCAL_RESOURCES_DIR
+      - SYSTEM_IP=$SYSTEM_IP
+      - node_ip_ftp=$node_ip_ftp
+      - node_port_ftp=$node_port_ftp
+      - node_path_ftp=$node_path_ftp
+      - auth_user_ftp=$auth_user_ftp
+      - auth_pass_ftp=$auth_pass_ftp
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${LOCAL_RESOURCES_DIR}:/resources
+
+      

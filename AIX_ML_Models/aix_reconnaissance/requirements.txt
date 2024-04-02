@@ -1,0 +1,10 @@
+sahi 
+yolov5==7.0.4
+opencv-python
+fastapi
+python-multipart
+uvicorn
+Pillow
+requests
+numpy
+kafka-python

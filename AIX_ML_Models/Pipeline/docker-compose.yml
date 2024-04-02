@@ -1,0 +1,33 @@
+# version: "3.3"
+
+# services:
+#   data_pipeline_v3:
+#     container_name: pipeline_hamza_v3 # Set the container name
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     # environment:
+#     #   - ENVIRONMENT_VARIABLE=value # Add any environment variables needed for your application
+#     # ports:
+#     #   - "8000:8000" # Add any ports needed for your application
+#     volumes:
+#       - .:/app # Mount the current directory as a volume inside the container
+#       - ./logs:/app/logs # Mount a local directory as a volume for the logs directory
+#     # command: bash -c "python3 local_video_hit.py >> /app/logs/pipeline.log 2>&1" # Redirect the output of the code to a log file
+#     command: bash -c "python3 local_video_hit.py >> /app/logs/pipeline.log 2>&1 & python3 camera_events_dump.py >> /app/logs/alerts_events.log 2>&1 & wait"
+
+version: "3.3"
+
+services:
+  data_pipeline_v3:
+    container_name: pipeline_hamza_v3 # Set the container name
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # environment:
+    #   - ELASTICSEARCH_HOST=http://10.100.160.106:9200
+    #   - THRESHOLD=31
+    volumes:
+      - .:/app # Mount the current directory as a volume inside the container
+      - ./logs:/app/logs # Mount a local directory as a volume for the logs directory
+    command: bash -c "python3 local_video_hit.py >> /app/logs/pipeline.log 2>&1 & python3 camera_events_dump.py >> /app/logs/alerts_events.log 2>&1 & python3 elastic_check.py >> /app/logs/delete_indices.log 2>&1 & wait"
