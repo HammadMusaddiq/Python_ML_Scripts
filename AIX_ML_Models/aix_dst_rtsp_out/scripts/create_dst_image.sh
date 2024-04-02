@@ -1,0 +1,1 @@
+sudo docker build -t dst_rtsp_out_multi services/dst_rtsp_out/.

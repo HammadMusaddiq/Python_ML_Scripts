@@ -1,0 +1,110 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/index.css">
+  </link>
+  <title>DST-WEB</title>
+</head>
+
+<body>
+  <header class="header row">
+    <div class="logo-section">
+      <!-- <img class="logo" src="http://172.16.20.51:8081/img/logo.bda81c4d.png" alt="logo" /> -->
+      <img class="logo" src="/css/image.png" alt="logo" />
+      <div class="logo-border"></div>
+    </div>
+    <div class="header-content">
+      <h1>AIX: Live Streaming Platform </h1>
+    </div>
+  </header>
+  <main class="main">
+    <div class="left-sidebar col-2">
+      <h4 class="logo-text">
+        AIX
+      </h4>
+    </div>
+    <div class="content col-10">
+
+      <div>
+        <form action="/dst_app_starter" method="post">
+          <input type="text" name="camera_url" value="{{ camera_url }}">
+          <input type="submit" value="Test">
+        </form>
+        {% if msg %}
+        <p>{{ msg }}</p>
+        {% endif %}
+      </div>
+
+      <br>
+
+      <!-- <div class="row justify-center m-auto max-width"> -->
+      <!-- <button class="button prepare-entry-btn" onclick="update_configs('f')"> Stop </button> -->
+      <!-- <br /> -->
+      <!-- </div> -->
+
+      <h3 id="num_detction">Live Feed:</h3>
+      <div class="frame-section">
+        <img class="frame" src="{{ url_for('video_feed') }}">
+        <!-- <img  class="frame" src="https://techcrunch.com/wp-content/uploads/2021/07/GettyImages-1207206237.jpg?w=1024"> -->
+      </div>
+      <h3 id="num_detction">Results:</h3>
+      <div id="showData">
+      </div>
+      <br>
+    </div>
+  </main>
+</body>
+
+</html>
+
+<script type="module">
+  
+  import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
+
+  // const socket = io();
+  // Connect to the Flask-SocketIO server
+  var socket = io.connect('http://localhost:8003');
+
+  // Listen for the 'new_message' event from the server
+  socket.on('detect_event', function (data) {
+    // Update the message container with the received data
+    // document.getElementById('message-container').innerHTML = data;
+    console.log(data);
+    const data_arr = data['data']['detections'];
+    // Create element table and append to the body to display the data
+    var table = document.createElement("table");
+    var tr = table.insertRow(-1);
+    var th = document.createElement("th");
+    th.innerHTML = "POS-X";
+    tr.appendChild(th);
+    var th = document.createElement("th");
+    th.innerHTML = "POS-Y";
+    tr.appendChild(th);
+    var th = document.createElement("th");
+    th.innerHTML = "Label";
+    tr.appendChild(th);
+    var th = document.createElement("th");
+    th.innerHTML = "Confidence";
+    tr.appendChild(th);
+    for (var i = 0; i < data_arr.length; i++) {
+      tr = table.insertRow(-1);
+      var tabCell = tr.insertCell(-1);
+      tabCell.innerHTML = data_arr[i]['x'];
+      var tabCell = tr.insertCell(-1);
+      tabCell.innerHTML = data_arr[i]['y'];
+      var tabCell = tr.insertCell(-1);
+      tabCell.innerHTML = data_arr[i]['label'];
+      var tabCell = tr.insertCell(-1);
+      tabCell.innerHTML = data_arr[i]['confidence'];
+    }
+
+    var divContainer = document.getElementById("showData");
+    divContainer.innerHTML = "";
+    divContainer.appendChild(table);
+
+    var num_detction = document.getElementById("num_detction");
+    num_detction.innerHTML = "Results: (" + data_arr.length + " Objects)";
+
+  });
+
+</script>
